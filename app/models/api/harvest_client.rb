@@ -39,7 +39,10 @@ class Api::HarvestClient
   end
 
   def authorize_url(redirect_uri)
-    oauth_client.auth_code.authorize_url({redirect_uri:redirect_uri})
+    oauth_client.auth_code.authorize_url({
+      :redirect_uri => redirect_uri, 
+      :scope => 'non-expiring'
+      })
   end
 
   def oauth_client

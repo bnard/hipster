@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def find_user
     @user = current_user
+    
     if @user.nil? || @user.harvest_secret.blank? || @user.harvest_subdomain.blank? || @user.harvest_identifier.blank? || @user.pivotal_token.blank?
       redirect_to edit_user_path(@user), notice: "Incomplete user profile"
     end
@@ -44,10 +45,15 @@ class ProjectsController < ApplicationController
   end
 
   def callback
-    activity = ActivityParam.new(params)
+    params_post = Hash.from_xml(request.raw_post)
+    params_post[:id] = params[:id]
+    params_post = params_post.with_indifferent_access
+    
+    activity = ActivityParam.new(params_post)
+
     harvest_user = @project.people.where(pivotal_name: activity.author).first
     harvest_id = harvest_user.harvest_id unless harvest_user.nil?
-
+    
     case activity.type
     when ActivityParam::CREATE_STORY
       harvest_id ||= harvest_api.get_project_manager_harvest_id(@project.harvest_project_id)
@@ -187,6 +193,7 @@ class ActivityParam
 
   attr_accessor :id, :event_type, :project_id, :author, :description, :story_id, :story_name, :story_state
   def initialize params={}
+    
     self.id = params[:id]
     params = params[:activity]
     self.event_type = params[:event_type]
