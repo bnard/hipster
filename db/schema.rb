@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301000548) do
+ActiveRecord::Schema.define(:version => 20130305083314) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -28,45 +28,6 @@ ActiveRecord::Schema.define(:version => 20130301000548) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
-  create_table "hiro_account_mappings", :force => true do |t|
-    t.integer "harvest_expense_category_id"
-    t.string  "harvest_expense_category_name", :limit => 50
-    t.string  "harvest_department_prefix",     :limit => 10
-    t.integer "xero_account_code"
-    t.string  "xero_account_name",             :limit => 50
-  end
-
-  create_table "hiro_department_mappings", :force => true do |t|
-    t.integer "harvest_department_id"
-    t.string  "harvest_department_name", :limit => 50
-    t.string  "xero_department_mapping", :limit => 50
-  end
-
-  create_table "hiro_expense_users", :force => true do |t|
-    t.string   "expense_id"
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "department"
-    t.datetime "date_period"
-    t.datetime "last_day_period"
-    t.datetime "spent_at_expense"
-    t.string   "description"
-    t.string   "currency"
-    t.float    "unit_price"
-    t.string   "project_id"
-    t.string   "project_name"
-    t.string   "category_expense"
-    t.boolean  "invoiced",         :default => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-  end
-
-  create_table "hiro_project_mappings", :force => true do |t|
-    t.integer "harvest_project_id"
-    t.string  "harvest_project_name", :limit => 50
-    t.string  "xero_project_name",    :limit => 50
-  end
 
   create_table "identities", :force => true do |t|
     t.string   "provider"
@@ -93,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130301000548) do
     t.string   "harvest_billable"
     t.string   "harvest_budget"
     t.string   "pivotal_start_iteration"
+    t.string   "pivotal_start_date"
   end
 
   add_index "integrations", ["user_id"], :name => "index_integrations_on_user_id"
@@ -137,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20130301000548) do
     t.string   "harvest_refresh_token"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.string   "email"
   end
 
 end

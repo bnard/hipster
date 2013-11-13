@@ -39,7 +39,6 @@ Pivotalharvested::Application.routes.draw do
   match 'auth/google_oauth2/callback' => 'home#google_oauth2'
   match 'auth/harvest/callback' => 'home#harvest'
 
-  mount Hiro::Engine => "/hiro"
   mount Resque::Server, :at => "/resque"
   
   # The priority is based upon order of creation:
