@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,7 +18,7 @@ end
 gem 'simple_form'
 gem 'pivotal-tracker', :git => 'git://github.com/donihanafi/pivotal-tracker.git'
 gem 'harvested', :git => 'git://github.com/fajarmf/harvested.git'
-gem 'hiro',path:'../hiro'
+#gem 'hiro',path:'../hiro'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -52,8 +53,8 @@ gem "bootstrap-sass", "~> 2.2.2.0"
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+# To use 
+gem 'debugger'
 
 # Background job
 gem 'resque', :require => 'resque/server'

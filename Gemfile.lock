@@ -22,18 +22,6 @@ GIT
       httparty
       json
 
-PATH
-  remote: ../hiro
-  specs:
-    hiro (0.0.1)
-      activerecord
-      activerecord-import (>= 0.2.0)
-      daemons
-      delayed_job
-      delayed_job_active_record
-      rails (~> 3.2.11)
-      xeroizer
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -58,9 +46,6 @@ GEM
       activesupport (= 3.2.11)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activerecord-import (0.3.1)
-      activerecord (~> 3.0)
-      activerecord (~> 3.0)
     activeresource (3.2.11)
       activemodel (= 3.2.11)
       activesupport (= 3.2.11)
@@ -79,6 +64,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    columnize (0.3.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -87,13 +73,15 @@ GEM
       compass (>= 0.12.2, < 0.14)
     crack (0.3.2)
     daemons (1.1.9)
-    delayed_job (3.0.5)
-      activesupport (~> 3.0)
-    delayed_job_active_record (0.4.4)
-      activerecord (>= 2.1.0, < 4)
-      delayed_job (~> 3.0)
+    debugger (1.6.2)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.3)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.2)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
@@ -128,7 +116,6 @@ GEM
     nokogiri (1.5.9)
     nokogiri-happymapper (0.5.7)
       nokogiri (~> 1.5)
-    oauth (0.4.5)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -221,6 +208,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
+    thin (1.6.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.3.7)
     treetop (1.4.12)
@@ -233,16 +224,6 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     vegas (0.1.11)
       rack (>= 1.0.0)
-    xeroizer (2.15.3)
-      activesupport
-      activesupport
-      builder (>= 2.1.2)
-      builder (>= 2.1.2)
-      i18n
-      nokogiri
-      nokogiri
-      oauth (= 0.4.5)
-      oauth (>= 0.3.6)
 
 PLATFORMS
   ruby
@@ -251,8 +232,8 @@ DEPENDENCIES
   bootstrap-sass (~> 2.2.2.0)
   coffee-rails (~> 3.2.1)
   compass-rails
+  debugger
   harvested!
-  hiro!
   jquery-rails (~> 2.2.1)
   omniauth-google-oauth2
   pg
@@ -266,4 +247,5 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   sqlite3
+  thin
   uglifier (>= 1.0.3)
